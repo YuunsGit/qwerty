@@ -57,3 +57,10 @@ client.on(Events.MessageCreate, async (message) => {
 });
 
 client.login(process.env.DISCORD_TOKEN);
+
+Bun.serve({
+  port: 8000,
+  fetch(_request) {
+    return new Response("Hello");
+  },
+});
