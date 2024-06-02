@@ -3,6 +3,11 @@ WORKDIR /app
 COPY . .
 RUN bun install
 
+RUN apt-get update && \
+    apt-get install -y chromium-browser && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
 ARG PORT
 EXPOSE ${PORT:-8000}
 
